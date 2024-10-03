@@ -7,8 +7,9 @@ exports.getProducts = async (req, res) => {
     const skip = (page - 1) * limit;
     const products = await Product.find()
     .skip(skip)
-    .limit(limit);;
-    res.status(200).json(products);
+    .limit(limit);
+    const totalCount = await Product.countDocuments();
+    res.status(200).json({products,totalCount});
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
