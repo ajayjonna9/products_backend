@@ -1,5 +1,4 @@
 // swaggerOptions.js
-
 const swaggerOptions = {
   definition: {
     openapi: "3.0.0", 
@@ -15,7 +14,9 @@ const swaggerOptions = {
     ],
   },
   // Path to the API docs (points to your route files where endpoints are defined)
-  apis: ["../routes/routes.js"],  // Adjust this path based on your folder structure
+  apis: ["../routes/routes.js"],
+  // apis: [`${__dirname}/**/routes.js`]  // Adjust this path based on your folder structure
 };
+// console.log(__dirname/),
 
 module.exports = swaggerOptions;

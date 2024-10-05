@@ -6,6 +6,7 @@ exports.getProducts = async (req, res) => {
     const limit = parseInt(req.query.limit) || 10;
     const skip = (page - 1) * limit;
     const products = await Product.find()
+    .sort({ _id: -1 })
     .skip(skip)
     .limit(limit);
     const totalCount = await Product.countDocuments();
