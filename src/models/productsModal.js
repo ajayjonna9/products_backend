@@ -14,17 +14,19 @@ const productSchema = new mongoose.Schema({
     required: true,
   },
   isRecommended: {
-    type: Boolean,
-    default: false,
+    type: Number,
+    enum: [1,0],
+    default: 0,
   },
   isBestSeller: {
-    type: Boolean,
-    default: false,
+    type: Number,
+    enum: [1,0],
+    default: 0,
   },
   status: {
-    type: String,
-    enum: ['available', 'out of stock'],
-    default: 'available',
+    type: Number,
+    enum: [1,0],
+    default: 0,
   },
 });
 

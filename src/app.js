@@ -4,7 +4,8 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/database');
 const productRoutes = require('./routes/routes');
 const swaggerUi = require('swagger-ui-express'); 
-// const swaggerSpec = require('./swaggerOptions');
+const swaggerJsdoc = require('swagger-jsdoc');
+const swaggerOptions = require('./config/swagger');
 
 dotenv.config();
 
@@ -16,7 +17,8 @@ app.use(express.json());
 app.use('/api', productRoutes);
 
 // Swagger Route
-// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+const swaggerDocs = swaggerJsdoc(swaggerOptions);    // Generate docs from options
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));  // Swagger UI route
 
 const PORT = process.env.PORT || 5000;
 connectDB().then(res=>{
