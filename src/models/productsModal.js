@@ -8,10 +8,18 @@ const productSchema = new mongoose.Schema({
   },
   description: {
     type: String,
+    required: true,
+    minlength: 3,
   },
   price: {
     type: Number,
     required: true,
+    validate: {
+      validator: function (value) {
+        return value > 0;
+      },
+      message: 'Price should be more than 0',
+    },
   },
   isRecommended: {
     type: Number,
