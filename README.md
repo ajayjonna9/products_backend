@@ -12,4 +12,5 @@ Follow these steps to get the project up and running locally.
   npm install
 
 3. Run
+
   npm run start
